@@ -12,7 +12,6 @@ import java.util.Optional;
 public class JobServiceImpl implements JobService {
 
     private final JobRepository jobRepository;
-    private Long nextId = 1L;
 
     // Constructor for dependency injection
     public JobServiceImpl(JobRepository jobRepository) {
@@ -26,7 +25,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void createJob(Job job) {
-        job.setId(nextId++);
+        // Let the database handle ID generation if using @GeneratedValue
         jobRepository.save(job);
     }
 
@@ -37,12 +36,11 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public boolean deleteJobById(Long id) {
-        try {
+        if (jobRepository.existsById(id)) {
             jobRepository.deleteById(id);
             return true;
-        } catch (Exception e) {
-            return false;
         }
+        return false;
     }
 
     @Override
@@ -54,6 +52,7 @@ public class JobServiceImpl implements JobService {
             job.setDescription(updatedJob.getDescription());
             job.setMinSalary(updatedJob.getMinSalary());
             job.setMaxSalary(updatedJob.getMaxSalary());
+            jobRepository.save(job); // Persist the updated entity
             return true;
         }
         return false;
