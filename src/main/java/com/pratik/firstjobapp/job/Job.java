@@ -1,23 +1,28 @@
 package com.pratik.firstjobapp.job;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-//@Table(name = "job")
 public class Job {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+    private String description;
+    private String minSalary;
+    private String maxSalary;
+    private String location;
 
     public Job() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-    private String title;
-    private String description;
-    private String minSalary;
-
     public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
-        Id = id;
+        this.id = id;
         this.title = title;
         this.description = description;
         this.minSalary = minSalary;
@@ -25,8 +30,13 @@ public class Job {
         this.location = location;
     }
 
-    private String maxSalary;
-    private String location;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -34,14 +44,6 @@ public class Job {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
     }
 
     public String getDescription() {
@@ -75,6 +77,4 @@ public class Job {
     public void setLocation(String location) {
         this.location = location;
     }
-
-
 }

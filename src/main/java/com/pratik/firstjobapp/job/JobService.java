@@ -3,16 +3,13 @@ package com.pratik.firstjobapp.job;
 import java.util.List;
 
 public interface JobService {
-    List<Job> findAll(); // Fetch all jobs
+    List<Job> findAll();
 
-    void createJob(Job job); // Add a new job
+    void createJob(Job job);
 
-    Job getJobById(Long id); // Fetch a job by its ID
+    Job getJobById(Long id);
 
-    boolean deleteJobById(Long id); // Delete a job by its ID
+    boolean deleteJobById(Long id);
 
-    boolean updateJob(Long id, Job updatedJob); // Update a job by its ID
+    boolean updateJob(Long id, Job updatedJob);
 }
-
-
-

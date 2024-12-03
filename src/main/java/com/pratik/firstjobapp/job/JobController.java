@@ -10,7 +10,6 @@ public class JobController {
 
     private final JobService jobService;
 
-    // Constructor injection
     public JobController(JobService jobService) {
         this.jobService = jobService;
     }
@@ -38,20 +37,12 @@ public class JobController {
     @DeleteMapping("/{id}")
     public String deleteJobById(@PathVariable Long id) {
         boolean isDeleted = jobService.deleteJobById(id);
-        if (isDeleted) {
-            return "Job deleted successfully!";
-        } else {
-            return "Job not found with ID: " + id;
-        }
+        return isDeleted ? "Job deleted successfully!" : "Job not found with ID: " + id;
     }
 
     @PutMapping("/{id}")
     public String updateJob(@PathVariable Long id, @RequestBody Job updatedJob) {
         boolean isUpdated = jobService.updateJob(id, updatedJob);
-        if (isUpdated) {
-            return "Job updated successfully!";
-        } else {
-            return "Job not found with ID: " + id;
-        }
+        return isUpdated ? "Job updated successfully!" : "Job not found with ID: " + id;
     }
 }

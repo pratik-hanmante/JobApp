@@ -13,7 +13,6 @@ public class JobServiceImpl implements JobService {
 
     private final JobRepository jobRepository;
 
-    // Constructor for dependency injection
     public JobServiceImpl(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
     }
@@ -25,7 +24,6 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void createJob(Job job) {
-        // Let the database handle ID generation if using @GeneratedValue
         jobRepository.save(job);
     }
 
@@ -52,7 +50,8 @@ public class JobServiceImpl implements JobService {
             job.setDescription(updatedJob.getDescription());
             job.setMinSalary(updatedJob.getMinSalary());
             job.setMaxSalary(updatedJob.getMaxSalary());
-            jobRepository.save(job); // Persist the updated entity
+            job.setLocation(updatedJob.getLocation());
+            jobRepository.save(job);
             return true;
         }
         return false;
