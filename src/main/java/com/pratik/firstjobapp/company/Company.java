@@ -1,11 +1,7 @@
 package com.pratik.firstjobapp.company;
 
 import com.pratik.firstjobapp.job.Job;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
-
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,9 +10,17 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String description;
 
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Job> jobs;
+
+    // Default constructor
+    public Company() {}
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -47,14 +51,5 @@ public class Company {
 
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
-    }
-
-    @OneToMany
-    private List<Job> jobs;
-
-    // private List<review> reviews;
-
-
-    public Company() {
     }
 }
