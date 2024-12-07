@@ -35,7 +35,7 @@ public class Company {
      * This defines a one-to-many relationship between Company and Job.
      * Each company can have multiple jobs.
      */
-    @OneToMany
+    @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
     /**

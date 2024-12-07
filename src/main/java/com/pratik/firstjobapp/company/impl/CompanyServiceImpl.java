@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class CompanyServiceImpl implements CompanyService {
 
-    private final CompanyRepository companyRepository;
+    public final CompanyRepository companyRepository;
 
     public CompanyServiceImpl(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
@@ -24,24 +24,25 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public boolean updateCompany(Company company, Long id) {
-        Optional<Company> companyOptional = companyRepository.findById(id);
-        if (companyOptional.isPresent()) {
-            Company companyToUpdate = companyOptional.get();
+        Optional<Company> existingCompanyOptional = companyRepository.findById(id);
 
-            if (company.getDescription() != null) {
-                companyToUpdate.setDescription(company.getDescription());
-            }
-            if (company.getName() != null) {
-                companyToUpdate.setName(company.getName());
-            }
-            if (company.getJobs() != null) {
-                companyToUpdate.setJobs(company.getJobs());
-            }
+        if (existingCompanyOptional.isPresent()) {
+            Company existingCompany = existingCompanyOptional.get();
 
-            companyRepository.save(companyToUpdate);
+            // Update fields
+            existingCompany.setName(company.getName());
+            existingCompany.setDescription(company.getDescription());
+            existingCompany.setJobs(company.getJobs()); // This assumes jobs are provided in the input
+
+            companyRepository.save(existingCompany);
             return true;
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void createCompany(Company company) {
+        companyRepository.save(company);
     }
 }
