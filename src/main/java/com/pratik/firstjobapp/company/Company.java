@@ -1,52 +1,27 @@
 package com.pratik.firstjobapp.company;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pratik.firstjobapp.job.Job;
 import jakarta.persistence.*;
-
 import java.util.List;
 
-/**
- * Entity class representing a company in the application.
- * Each company can have multiple jobs associated with it.
- */
 @Entity
 public class Company {
 
-    /**
-     * Primary key for the company entity.
-     * The ID is auto-generated using the IDENTITY strategy.
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /**
-     * Name of the company.
-     */
     private String name;
 
-    /**
-     * Description of the company.
-     */
     private String description;
 
-    /**
-     * List of jobs associated with the company.
-     * This defines a one-to-many relationship between Company and Job.
-     * Each company can have multiple jobs.
-     */
+    @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
-    /**
-     * Default constructor for the Company entity.
-     * This is required by JPA.
-     */
     public Company() {
     }
-
-    // Getter and setter methods for the fields.
-    // These are used to access and modify the private fields.
 
     public Long getId() {
         return id;
@@ -79,8 +54,4 @@ public class Company {
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
-
-    // Uncomment and define the 'reviews' field if reviews are to be associated with a company.
-    // This might also require another entity class to manage reviews.
-    // private List<Review> reviews;
 }

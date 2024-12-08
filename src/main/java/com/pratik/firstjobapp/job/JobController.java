@@ -1,5 +1,6 @@
 package com.pratik.firstjobapp.job;
 
+import com.pratik.firstjobapp.company.Company;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class JobController {
     @PostMapping
     public String createJob(@RequestBody Job job) {
         jobService.createJob(job);
+        Company c = job.getCompany();
         return "Job created successfully!";
     }
 
