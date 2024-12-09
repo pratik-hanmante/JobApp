@@ -67,4 +67,9 @@ public class CompanyController {
             return new ResponseEntity<>("Company doesnt exit", HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping
+    publlic ResponseEntity<String>getAllCompanies(@PathVariable Long id) {
+        companyService.getAllCompanies();
+    }
 }
