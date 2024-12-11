@@ -1,29 +1,35 @@
 package com.pratik.firstjobapp.Review;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Review {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY);
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Long getId() {
-        return id;
+    private String title;
+    private String description;
+    private double rating;
+
+    // Default constructor
+    public Review() {
     }
 
-    public Review() {
+    // Getter and Setter for ID
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    // Getter and Setter for Title
     public String getTitle() {
         return title;
     }
@@ -32,6 +38,7 @@ public class Review {
         this.title = title;
     }
 
+    // Getter and Setter for Description
     public String getDescription() {
         return description;
     }
@@ -40,6 +47,7 @@ public class Review {
         this.description = description;
     }
 
+    // Getter and Setter for Rating
     public double getRating() {
         return rating;
     }
@@ -47,8 +55,4 @@ public class Review {
     public void setRating(double rating) {
         this.rating = rating;
     }
-
-    private String title;
-    private String description;
-    private double rating;
 }
