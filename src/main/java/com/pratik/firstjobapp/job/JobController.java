@@ -45,6 +45,6 @@ public class JobController {
     @PutMapping("/{id}")
     public String updateJob(@PathVariable Long id, @RequestBody Job updatedJob) {
         boolean isUpdated = jobService.updateJob(id, updatedJob);
-        return isUpdated ? "Job updated successfully!" : "Job not found with ID: " + id;
+        return isUpdated ? "Job updated successfully!" : " found with ID: " + id;
     }
 }
