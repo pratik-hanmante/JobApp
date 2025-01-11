@@ -9,6 +9,8 @@ import java.util.List;
 @Entity
 public class Company {
 
+
+//this will increment the id value
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
