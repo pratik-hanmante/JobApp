@@ -17,7 +17,6 @@ public class CompanyController {
     }
 
     /**
-     * Get all companies.
      *
      * @return List of all companies with an HTTP status of 200 (OK).
      */
