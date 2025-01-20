@@ -24,7 +24,7 @@ public class JobController {
     public String createJob(@RequestBody Job job) {
         jobService.createJob(job);
         Company c = job.getCompany();
-        return "Job created successfully!";
+        return "Job created!";
     }
 
     @GetMapping("/{id}")
