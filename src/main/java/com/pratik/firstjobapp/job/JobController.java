@@ -39,7 +39,7 @@ public class JobController {
     @DeleteMapping("/{id}")
     public String deleteJobById(@PathVariable Long id) {
         boolean isDeleted = jobService.deleteJobById(id);
-        return isDeleted ? "Job deleted successfully!" : "Job not found with ID: " + id;
+        return isDeleted ? "Job deleted successfully!" : "Job not found ID: " + id;
     }
 
     @PutMapping("/{id}")
