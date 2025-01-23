@@ -27,7 +27,7 @@ public class CompanyController {
     }
 
     /**
-     * Update an existing company by its ID.
+     
      *
      * @param id      ID of the company to update.
      * @param company Updated company details.
