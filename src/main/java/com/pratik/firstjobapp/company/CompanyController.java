@@ -45,7 +45,7 @@ public class CompanyController {
     }
 
     /**
-     * Add a new company.
+     * Add new company.
      *
      * @param company The company to add.
      * @return Response indicating the success of the addition.
