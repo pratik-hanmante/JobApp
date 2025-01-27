@@ -60,7 +60,7 @@ public class CompanyController {
     public  ResponseEntity<String>deleteCompany(@PathVariable Long id) {
         boolean isDeleted = companyService.deleteCompany(id);
         if (isDeleted) {
-            return new ResponseEntity<>("Company delete successfully", HttpStatus.OK);
+            return new ResponseEntity<>("Company deleted  successfully", HttpStatus.OK);
         }
         else {
             return new ResponseEntity<>("Company doesnt exit", HttpStatus.NOT_FOUND);
