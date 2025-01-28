@@ -10,7 +10,7 @@ import java.util.List;
 public class Company {
 
 
-//this will increment the id value
+//this will increment the id 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
