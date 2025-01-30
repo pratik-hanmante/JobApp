@@ -28,7 +28,7 @@ public class ReviewController {
     // Handles GET requests to the `/reviews` endpoint for the specified company ID.
     @GetMapping("/reviews")
     public ResponseEntity<List<Review>> getAllReviews(@PathVariable Long companyId) {
-        // Fetches all reviews for the given company ID using the ReviewService.
+       
         // Wraps the list of reviews in a ResponseEntity with an HTTP status of OK (200).
         return new ResponseEntity<>(reviewService.getAllReviews(companyId), HttpStatus.OK);
     }
